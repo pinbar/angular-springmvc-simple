@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<title>Simple AngularJS App</title>
+<script src="resources/lib/angular/angular.js"></script>
+<script src="resources/lib/angular-mocks/angular-mocks.js"></script>
+<script src="resources/lib/angular-route/angular-route.js"></script>
+  
+<script src="resources/js/config.js"></script>
+<script src="resources/js/controllers.js"></script>
+<script src="resources/js/services.js"></script>
+
+</head>
+<body>
+    <h3>Ohio State Fan Page</h3>
+    <hr>
+
+    <h3>Ohio State Team Report</h3>
+    <div>
+        <a id="scoreLink" href="#/score">score</a><br>
+    </div>
+    <hr>
+
+    <h3>Ohio State QB Report</h3>
+    <div>
+	    <a id="infoLink" href="#/info">info</a><br>
+	    <a id="statLink" href="#/stats">stats</a><br>
+    </div>
+    <hr>
+    <div ng-view></div>
+
+</body>
+</html>

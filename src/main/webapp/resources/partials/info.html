@@ -1,0 +1,10 @@
+<!-- <div ng-controller="PlayerController as playerCtrl"> --> 
+<!-- controller is already initialized/digested in the route config -->
+<div>
+    <div id="playerName">
+        <b>Name:</b> {{ playerCtrl.firstName + " " + playerCtrl.lastName }}
+    </div>
+    <br>
+    <div>{{ playerCtrl.errorCode }}</div>
+    <button id="getRealBtn" value="get" ng-click="playerCtrl.getPlayer()">get real!</button><br>
+</div>
