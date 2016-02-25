@@ -55,6 +55,6 @@ Clone the git repository or download the zip file and unzip it to a directory.
     * To run with coverage report enabled: `grunt e2e_coverage`. This will use the "unbuilt" code, so that the coverage report can list individual source files. Coverage reports can be found in /coverage/e2e directory.
 7. See `/Gruntfile.js` for more details on the various tasks
 
-*Note:*
+8. __Note:__
     * For the standalong front end to be fully functional, the REST services have to be up and running.
     * If you have the jetty server up in the "how to" above, that should be enough for this.
