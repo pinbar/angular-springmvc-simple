@@ -1,17 +1,12 @@
 module.exports = function(grunt) {
 
 	grunt.registerTask('build', ['clean','copy:built','concat:lib','concat:app']);
-
 	grunt.registerTask('serve', ['clean','copy:lib','copy:dev','connect:standalone']);
-
 	grunt.registerTask('serve_built', ['build','connect:standalone']);
-
-	grunt.registerTask('unit', 'karma');
-	
+	grunt.registerTask('unit', ['clean', 'karma']);
 	grunt.registerTask('e2e', ['build', 'connect:e2e', 'protractor'])																																																							;
-
 	grunt.registerTask('e2e_coverage', ['clean','copy:lib','copy:e2e','instrument','connect:e2e_coverage','protractor_coverage','makeReport'])																																																							;
-
+	
 	grunt.initConfig({
 		
 		clean: ["dist/", "instrumented/", "coverage/"],
