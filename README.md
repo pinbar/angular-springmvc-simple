@@ -42,7 +42,7 @@ Clone the git repository or download the zip file and unzip it to a directory.
 3. Run the in memory jetty application server: `mvn jetty:run`
 4. Launch a web browser and point to localhost:8080/buckeyefootball (you can change the default port, if needed)
 
-#### How to build, install, run the front end (separate from the REST services):
+#### How to build, install, run the front end in standlone mode (separate from the REST services):
 1. Ensure that you have npm, grunt-cli and karma-cli installed globally
     * verify: `npm list -g --depth 0`
     * This should show you a list of globally installed packages
@@ -51,7 +51,10 @@ Clone the git repository or download the zip file and unzip it to a directory.
 4. To minify/concatenate/uglify and use the "built" code to launch the server: `grunt serve_built`
 5. To run JS unit tests using karma: `grunt unit`. Coverage reports can be found in /coverage/unit directory.
 6. To run End to End tests using protractor: `grunt e2e`. This will use the "built" code to run E2E tests.
-    * You need the REST APIs to be available for your e2e tests to access. If you have the jetty server up in the "how to" above, that should be enough.
     * This uses the "built" code. To run with "unbuilt" code, modify the task in `/Gruntfile.js`.
     * To run with coverage report enabled: `grunt e2e_coverage`. This will use the "unbuilt" code, so that the coverage report can list individual source files. Coverage reports can be found in /coverage/e2e directory.
 7. See `/Gruntfile.js` for more details on the various tasks
+
+*Note:*
+    * For the standalong front end to be fully functional, the REST services have to be up and running.
+    * If you have the jetty server up in the "how to" above, that should be enough for this.
