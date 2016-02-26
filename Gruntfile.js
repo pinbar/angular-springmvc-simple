@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
 
-	grunt.registerTask('build', ['clean','copy:built','concat:lib','concat:app']);
+	grunt.registerTask('build', ['clean','copy:built','concat:lib','concat:app', 'uglify']);
 	grunt.registerTask('serve', ['clean','copy:lib','copy:dev','connect:standalone']);
 	grunt.registerTask('serve_built', ['build','connect:standalone']);
 	grunt.registerTask('unit', ['clean', 'karma']);
@@ -21,6 +21,13 @@ module.exports = function(grunt) {
 		    app: {
 		      	src: ['src/main/webapp/resources/js/*.js'],
 		      	dest: 'dist/resources/js/built.js',
+		    }
+		},
+		uglify: {
+		    src: {
+		    	files: {
+		    		'dist/resources/js/built.js': ['dist/resources/js/built.js']
+		    	}
 		    }
 		},
 		copy: {
@@ -155,6 +162,7 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-karma');
