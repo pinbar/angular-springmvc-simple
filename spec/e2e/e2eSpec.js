@@ -1,5 +1,9 @@
+var PerfRunner = require('protractor-perf');
+
 describe("Angular E2E Tests: ", function(){
 	
+	var perfRunner = new PerfRunner(protractor, browser);
+
 	beforeEach(function(){
 		browser.get(browser.baseUrl);
 	});
@@ -23,13 +27,23 @@ describe("Angular E2E Tests: ", function(){
 			element(by.id('infoLink')).click();
 		});
 		
-		it("name should be Pinak", function(){
-			expect(element(by.id('playerName')).getText()).toEqual('Name: Pinak Barve');
+		it("name should be PinBar", function(){
+			expect(element(by.id('playerName')).getText()).toEqual('Name: Pin Bar');
 		});
-
-		it("name should be JT", function(){
+		it("name should be JT Barrett", function(){
+			perfRunner.start();
+	
 			element(by.id('getRealBtn')).click();
 			expect(element(by.id('playerName')).getText()).toEqual('Name: JT Barrett');
+	
+			perfRunner.stop();
+	
+			if (perfRunner.isEnabled) {
+				//perfRunner.printStats();
+				//to see a failure, set to < 1 or increase the service time simulation in the controller
+				expect(perfRunner.getStats('requestTime')).toBeLessThan(2);
+			};
+
 		});
 	});
 });

@@ -6,7 +6,8 @@ module.exports = function(grunt) {
 	grunt.registerTask('unit', ['clean', 'karma']);
 	grunt.registerTask('e2e', ['build', 'connect:e2e', 'protractor'])																																																							;
 	grunt.registerTask('e2e_coverage', ['clean','copy:lib','copy:e2e','instrument','connect:e2e_coverage','protractor_coverage','makeReport'])																																																							;
-	
+  	grunt.registerTask('e2e_perf', ['build', 'connect:e2e', 'protractorperf']);
+
 	grunt.initConfig({
 		
 		clean: ["dist/", "instrumented/", "coverage/"],
@@ -100,7 +101,7 @@ module.exports = function(grunt) {
       			configFile: "protractor.conf.js",
       			noColor: false,
       			args: {
-      				baseUrl: 'http://localhost:9001'
+      				baseUrl: 'http://localhost:9001',
       			}
     		},
     		all: {}
@@ -169,5 +170,21 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-istanbul');
 	grunt.loadNpmTasks('grunt-protractor-runner');
 	grunt.loadNpmTasks('grunt-protractor-coverage');
+
+
+	var protractorperf = require('protractor-perf');
+	grunt.registerTask('protractorperf', function() {
+	    var donerun = this.async();
+	    var argv = {
+	    	configFile: 'protractor.conf.js',
+          	seleniumServerJar: 'node_modules/protractor/selenium/selenium-server-standalone-2.51.0.jar',
+          	selenium: 'http://localhost:4444/wd/hub',
+          	seleniumPort: 4444,
+          	capabilities: {'browserName' : 'chrome'},
+          	chromeDriver: 'node_modules/protractor/selenium/chromedriver',
+      		baseUrl: 'http://localhost:9001'
+	    };
+	    protractorperf.run('./protractor.conf.js', donerun, argv); // config file
+	  });
 
 };

@@ -2,8 +2,8 @@ angular.module("controllersModule", ["servicesModule"])
 .controller("PlayerController", ["PlayerService", function(PlayerService){
 	
 	var vm = this;
-	vm.firstName = "Pinak";
-	vm.lastName = "Barve";
+	vm.firstName = "Pin";
+	vm.lastName = "Bar";
 	vm.errorCode;
 	
 	//(

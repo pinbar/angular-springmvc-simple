@@ -5,5 +5,13 @@ exports.config = {
 	framework: 'jasmine',
 	getPageTimeout: 5000,
 	allScriptsTimeout: 2000,
-	specs: ['spec/e2e/**/*Spec.js']
+	specs: ['spec/e2e/**/*Spec.js'],
+	plugins: [
+	  {
+        chromeA11YDevTools: {
+          treatWarningsAsFailures: true
+        },
+        package: 'protractor-accessibility-plugin'
+      }
+    ]
 }
